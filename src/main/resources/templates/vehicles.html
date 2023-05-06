@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Vehiculos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/styles.css"/>
+    </head>
+    <body>
+        <h1>Lista de Vehiculos</h1>
+        <a th:href="@{/}">Inicio</a> |
+        <a th:href="@{/vehicles/new}">Agregar</a>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Placa</th>
+                <th>Color</th>
+                <th>Estado</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            <tr th:each="vehicle : ${vehicles}">
+                <td th:text="${vehicle.name}"></td>
+                <td th:text="${vehicle.brand}"></td>
+                <td th:text="${vehicle.model}"></td>
+                <td th:text="${vehicle.plate}"></td>
+                <td th:text="${vehicle.color}"></td>
+                <td>
+                    <span th:if="${vehicle.indActive == 1}" th:text="Habilitado"></span>
+                    <span th:unless="${vehicle.indActive == 1}" th:text="Deshabilitado"></span>
+                </td>
+                <td>
+                    <a th:href="@{/vehicle/edit/} + ${vehicle.id}">Editar</a>
+                </td>
+                <td>
+                    <a th:href="@{/vehicle/delete/} + ${vehicle.id}">Eliminar</a>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/styles.css"/>
+    </head>
+    <body>
+        <h1>Formulario de Vehiculos</h1>
+        <a th:href="@{/vehicles}">Regresar</a>
+        <form th:action="@{/save}" method="post" th:object="${vehicle}">
+            <input type="hidden" name="id" th:field="*{id}">
+            <div class="field-container">
+                <label for="name">Nombre: </label>
+                <input type="text" name="name" th:field="*{name}">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="field-error"></span>
+            </div>
+            <div class="field-container">
+                <label for="brand">Marca: </label>
+                <input type="text" name="brand" th:field="*{brand}">
+                <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="field-error"></span>
+            </div>
+            <div class="field-container">
+                <label for="model">Modelo: </label>
+                <input type="text" name="model" th:field="*{model}">
+                <span th:if="${#fields.hasErrors('model')}" th:errors="*{model}" class="field-error"></span>
+            </div>
+            <div class="field-container">
+                <label for="plate">Placa: </label>
+                <input type="text" name="plate" th:field="*{plate}">
+                <span th:if="${#fields.hasErrors('plate')}" th:errors="*{plate}" class="field-error"></span>
+            </div>
+            <div class="field-container">
+                <label for="color">Color: </label>
+                <input type="text" name="color" th:field="*{color}">
+                <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}" class="field-error"></span>
+            </div>
+            <div th:if="${accion == 'Editar'}" class="field-container">
+                <label for="indActive">Estado: </label>
+                <select th:field="*{indActive}">
+                    <option value="1">Habilitado</option>
+                    <option value="0">Deshabilitado</option>
+                </select>
+            </div>
+            <div class="field-container center-field">
+                <input type="submit" name="save" value="Guardar">
+            </div>
+        </form>
+    </body>
+</html>
