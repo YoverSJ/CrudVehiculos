@@ -6,6 +6,7 @@ package com.pe.crud.controller;
 
 import com.pe.crud.model.Vehicle;
 import com.pe.crud.repository.VehicleRepository;
+import com.pe.crud.service.VehicleService;
 import jakarta.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class VehicleController {
     
     @Autowired
-    private VehicleRepository vehicleRepo;
+    private VehicleService vehicleService;
     
     @GetMapping("/")
     public String home(){
@@ -35,7 +36,7 @@ public class VehicleController {
     
     @GetMapping("/vehicles")
     public String listVehicles(Model model){
-        var vehicles = vehicleRepo.findAll();
+        var vehicles = vehicleService.listar();
         model.addAttribute("vehicles", vehicles);
         return "vehicles";
     }
@@ -55,7 +56,7 @@ public class VehicleController {
         LocalDateTime fechaActual = LocalDateTime.now();
         vehicle.setCreateAt(fechaActual);
         
-        vehicleRepo.save(vehicle);
+        vehicleService.guardar(vehicle);
         
         return "redirect:/vehicles";
     }
@@ -63,7 +64,7 @@ public class VehicleController {
     @GetMapping("/vehicle/edit/{id}")
     public String editVehicle(Vehicle vehicle, Model model){
         String accion = "Editar";
-        vehicle = vehicleRepo.findById(vehicle.getId()).orElse(null);
+        vehicle = vehicleService.encontrarPorId(vehicle);
         //log.info(vehicle.toString());
         model.addAttribute("vehicle", vehicle);
         model.addAttribute("accion", accion);
@@ -72,7 +73,7 @@ public class VehicleController {
     
     @GetMapping("/vehicle/delete/{id}")
     public String deleteVehicle(Vehicle vehicle){
-        vehicleRepo.delete(vehicle);
+        vehicleService.eliminar(vehicle);
         return "redirect:/vehicles";
     }
     

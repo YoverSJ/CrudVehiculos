@@ -19,5 +19,5 @@ public interface VehicleService {
     
     public List<Vehicle> listar();
     
-    public Vehicle encontrarVehiculo(Vehicle vehicle);
+    public Vehicle encontrarPorId(Vehicle vehicle);
 }
