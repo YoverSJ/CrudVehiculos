@@ -11,19 +11,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <link rel="stylesheet" href="/css/styles.css"/>
     </head>
     <body>
-        <h1>Lista de Vehiculos</h1>
-        <a th:href="@{/}">Inicio</a> |
-        <a th:href="@{/vehicles/new}">Agregar</a>
+        <h1 th:text="#{vehicles.titulo}"></h1>
+        <a th:href="@{/}" th:text="#{vehicles.accion.inicio}"></a> |
+        <a th:href="@{/vehicles/new}" th:text="#{vehicles.accion.agregar}"></a>
         <table>
             <tr>
-                <th>Nombre</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Placa</th>
-                <th>Color</th>
-                <th>Estado</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+                <th>[[#{vehicles.table.header.nombre}]]</th>
+                <th>[[#{vehicles.table.header.marca}]]</th>
+                <th>[[#{vehicles.table.header.modelo}]]</th>
+                <th>[[#{vehicles.table.header.placa}]]</th>
+                <th>[[#{vehicles.table.header.color}]]</th>
+                <th>[[#{vehicles.table.header.estado}]]</th>
+                <th>[[#{vehicles.table.header.editar}]]</th>
+                <th>[[#{vehicles.table.header.eliminar}]]</th>
             </tr>
             <tr th:each="vehicle : ${vehicles}">
                 <td th:text="${vehicle.name}"></td>
@@ -36,10 +36,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <span th:unless="${vehicle.indActive == 1}" th:text="Deshabilitado"></span>
                 </td>
                 <td>
-                    <a th:href="@{/vehicle/edit/} + ${vehicle.id}">Editar</a>
+                    <a th:href="@{/vehicle/edit/} + ${vehicle.id}">[[#{vehicles.accion.editar}]]</a>
                 </td>
                 <td>
-                    <a th:href="@{/vehicle/delete/} + ${vehicle.id}">Eliminar</a>
+                    <a th:href="@{/vehicle/delete/} + ${vehicle.id}">[[#{vehicles.accion.eliminar}]]</a>
                 </td>
             </tr>
         </table>

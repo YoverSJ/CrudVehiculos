@@ -10,7 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Bienevenidos a mi Pagina Web</h1>
-        <a th:href="@{/vehicles}">Vehiculos</a>
+        <h1 th:text="#{index.titulo}"></h1>
+        <a th:href="@{/vehicles}" th:text="#{index.accion.vehiculos}"></a>
     </body>
 </html>
