@@ -5,14 +5,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html xmlns:th="https://www.thymeleaf.org">
     <head>
-        <title>Inicio</title>
+        <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1 th:text="#{index.titulo}"></h1>
-        <a th:href="@{/vehicles}" th:text="#{index.accion.vehiculos}"></a>
-        <br><br>
-        <footer th:replace="layout/plantilla :: footer"></footer>
+        <footer th:componet="footer">
+            <div>
+                <a th:href="@{/(lang = es)}">ES</a> | 
+                <a th:href="@{/(lang = en)}">EN</a> | 
+                <span>[[#{index.footer.derechos}]] <a href="https://www.yoversj.com">YoverSJ</a></span>
+            </div>
+        </footer>
     </body>
 </html>
