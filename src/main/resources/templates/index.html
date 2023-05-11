@@ -12,5 +12,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <h1 th:text="#{index.titulo}"></h1>
         <a th:href="@{/vehicles}" th:text="#{index.accion.vehiculos}"></a>
+        <footer>
+            <div>
+                <a th:href="@{/(lang = es)}">ES</a> | 
+                <a th:href="@{/(lang = en)}">EN</a> | 
+                <span>[[#{index.footer.derechos}]] <a href="https://www.yoversj.com">YoverSJ</a></span>
+            </div>
+        </footer>
     </body>
 </html>
